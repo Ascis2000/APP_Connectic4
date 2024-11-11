@@ -1,35 +1,39 @@
-
 // CONNECTIC4
 const express = require('express');
-require('dotenv').config();
-/* require('./config/db_pgsql');
-require('./config/db_mongo'); */
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const dotenv = require('dotenv');
+const authRoutes = require('./routes/authRoutes');
 
+dotenv.config();
 const app = express();
-const port = 3000; 
 
+// Middleware para manejar rutas no encontradas (404)
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
+// Configurar Pug como motor de plantillas
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views')); // Define la carpeta de vistas
+
+// Configura los archivos estáticos (CSS y JavaScript del frontend)
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Middleware para manejar JSON
 app.use(express.json());
-//app.use(express.urlencoded({ extended: true }));
 
-// importar middlewares
-/* const morgan = require('./middlewares/morgan'); */
-const manage404 = require('./middlewares/manage404');
-
-// Logger
-/* app.use(morgan(':method :url :status :param[id] - :response-time ms :body')); */
-
+// Rutas
+app.use(authRoutes);
 app.get('/', (req, res) => {
-    res.send('Hello CONNECTIC4!');
+    res.render('index'); // Renderiza la plantilla `index.pug`
 });
 
-// Rutas WEB
-/* const paginaRoutes = require("./routes/pagina.web.routes");
-app.use('/', paginaRoutes);  */
 
-// Para todo el resto de rutas no contempladas
+const manage404 = require('./middlewares/manage404');
 app.use('*', manage404);
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+// Iniciar el servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
