@@ -40,8 +40,7 @@ app.get('/results', async (req, res) => {
     // const results = arr_datosScraping
     const tituloBusqueda = query.toLowerCase();
     const results = arr_datosScraping.filter(item =>
-        item.title.toLowerCase().includes(tituloBusqueda)
-            );
+        item.title.toLowerCase().includes(tituloBusqueda));
     // const results = await performScrapingOrDbSearch(query); // función de búsqueda
     res.render('results', { results, query });
 });
@@ -50,7 +49,7 @@ app.get('/results', async (req, res) => {
 /* app.use(morgan(':method :url :status :param[id] - :response-time ms :body')); */
 
 app.get('/', (req, res) => {
-    res.send('Hello CONNECTIC4!');
+    res.sen('');
 });
 
 // Rutas WEB
