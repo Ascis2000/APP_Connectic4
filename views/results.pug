@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Resultados para "#{query}"
+  ul
+    each result in results
+      li
+        h2= result.title
+        p= result.subtitle
+        p= result.description
+        a(href=result.urlWeb) Ver más
+        img(src=result.imgSrc, alt=result.title)
