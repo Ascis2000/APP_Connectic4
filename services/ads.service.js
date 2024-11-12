@@ -14,3 +14,93 @@ const anunciosSchema = new mongoose.Schema({
 const Anuncio = mongoose.model('Anuncio', anunciosSchema);
 
 module.exports = Anuncio; */
+
+const Ads = require('../models/ads.model');
+
+// obtenemos un solo anuncio
+const getOneAd = async (id) => {
+
+	return await Ads.findById(id, '-_id -__v');
+};
+
+// obtenemos todos los anuncios
+const getAllAds = async () => {
+
+	return await Ads.find({}, '-__v');
+};
+
+// creamos un solo anuncio
+async function createOneAd(datosProduct) {
+
+	const producto = new Ads(datosProduct);
+	return await producto.save();
+}
+
+// insertamos todos los anuncios 'scraping' en la BBDD
+const crearDatosScraping = async (productosArray) => {
+
+	// Verifica si productosArray es un array
+	if (!Array.isArray(productosArray)) {
+		throw new Error('Los datos de scraping no son un array válido');
+	}
+
+	// Inserta los productos en la base de datos
+	try {
+		const resultados = await Ads.insertMany(productosArray);
+		return resultados;
+
+	} catch (error) {
+		console.error('Error al insertar productos:', error);
+		throw error;
+	}
+};
+
+/*
+{
+"title": "titulo prueba 1",
+"subtitle": "subtitulo prueba 1",
+  "description": "descripcion 1",
+  "urlWeb": "http://...", -> una que exista
+  "imgSrc": "http://..."
+}
+*/
+const updateAd = async (id, datosAd) => {
+	return await Ads.findByIdAndUpdate(id, datosAd, { new: true });
+};
+
+const deleteAd = async (id) => {
+	return await Ads.findByIdAndDelete(id);
+};
+
+// obtenemos un anuncio por su URL
+const getAdsByUrl = async (urlWebBase) => {
+	const urlBaseFormatted = urlWebBase.trim();
+	return await Ads.findOne({
+		urlWeb: { $regex: `^${urlBaseFormatted}` }
+	})
+};
+
+// función de búsqueda por título
+const buscarPorTitulo = async (titulo) => {
+	try {
+		const resultados = await Ads.find({
+			title: { $regex: titulo, $options: 'i' }
+		});
+		return resultados;
+	} catch (error) {
+		console.error("Error al buscar documentos:", error);
+		throw error;
+	}
+}
+
+module.exports = {
+	getOneAd,
+	getAllAds,
+	createOneAd,
+	updateAd,
+	deleteAd,
+
+	getAdsByUrl,
+	buscarPorTitulo,
+	crearDatosScraping,
+};

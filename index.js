@@ -33,10 +33,11 @@ app.use(userRoutes);
 app.use(authRoutes);
 
 
-app.get('/', (req, res) => {
-    res.send('Hello CONNECTIC4!');
-});
+// Rutas API para ads
+const adsRoutes = require("./routes/ads.routes");
 
+// Usa adRoutes para la ruta raíz
+app.use('/', adsRoutes);
 
 
 

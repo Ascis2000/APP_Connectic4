@@ -1,26 +1,33 @@
+
 doctype html
 html
-  head
-    title Connectic4
-    link(rel="stylesheet", href="/css/styles.css")
-    script(src="/js/script.js", defer)
-  body
-    header
-      .navbar
-        img(src="/assets/img/connectic4_b.png" alt="Connectic4 Logo" class="logo")
-        .auth-buttons
-          a.login-button(href="/login") Iniciar sesión
-          a.register-button(href="/register") Registrarse
+	head
+		title Connectic4
+		link(rel="stylesheet", href="/css/styles.css")
+		//script(src="/js/script.js", defer)
+	body
+		header
+			.navbar
+				img(src="/assets/img/connectic4_b.png" alt="Connectic4 Logo" class="logo")
+				include formBuscar.pug
+				.auth-buttons
+					a.login-button(href="/login") Iniciar sesión
+					a.register-button(href="/register") Registrarse
 
-    main
-      .banner
-        .banner-content
-          h2 La plataforma que te conecta con el mundo
-          button(onclick="showAllEvents()") Ver todos los eventos
+		main
+			.banner
+				.banner-content
+					h2 La plataforma que te conecta con el mundo
+					button(onclick="showAllEvents()") Ver todos los eventos
 
-      // Contenedor para las tarjetas de eventos
-      .results#resultsContainer
-        // Las tarjetas se generarán dinámicamente desde script.js
+			// Contenedor para las tarjetas de eventos
+			.results#resultsContainer
 
-    footer
-      p © 2024 Connectic4
+				// Verifica si hay eventos para mostrar
+				if ads && ads.length > 0
+					include listAds.pug
+
+				else
+					p No hay eventos disponibles en este momento.
+
+		include footer.pug
