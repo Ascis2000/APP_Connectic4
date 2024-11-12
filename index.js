@@ -6,8 +6,12 @@ const path = require('path');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/users.routes');
+const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const port = 3000;
+
+// Configura los archivos estáticos (CSS y JavaScript del frontend)
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Middleware para manejar rutas no encontradas (404)
@@ -31,6 +35,8 @@ app.use(express.json());
 // Rutas
 app.use(userRoutes);
 app.use(authRoutes);
+
+app.use('/admin', adminRoutes);
 
 
 // Rutas API para ads

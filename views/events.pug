@@ -1,0 +1,9 @@
+doctype html
+html
+  head
+    title Lista de Eventos
+  body
+    h1 Eventos Disponibles
+    ul
+      each event in events
+        li #{event.name} - #{event.date}

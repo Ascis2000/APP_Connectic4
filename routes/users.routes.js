@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { registerUser, updateUser, deleteUser} = require('../controllers/users.controllers');
+const { registerUser, updateUser} = require('../controllers/users.controllers');
 
 // Endpoint para registrar un nuevo usuario
 router.post('/api/user', registerUser);
