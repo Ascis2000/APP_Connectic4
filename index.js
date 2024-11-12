@@ -4,9 +4,11 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/users.routes');
 
 dotenv.config();
 const app = express();
+
 
 // Middleware para manejar rutas no encontradas (404)
 app.use(express.urlencoded({ extended: true }));
@@ -23,10 +25,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 // Rutas
+app.use(userRoutes);
 app.use(authRoutes);
+
 app.get('/', (req, res) => {
     res.render('index'); // Renderiza la plantilla `index.pug`
 });
+
 
 
 const manage404 = require('./middlewares/manage404');
