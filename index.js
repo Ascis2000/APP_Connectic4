@@ -6,8 +6,10 @@ const path = require('path');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/users.routes');
+const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const port = 3000;
+
 
 // Middleware para manejar rutas no encontradas (404)
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +33,8 @@ app.use(userRoutes);
 
 // authRoutes
 app.use(authRoutes);
+
+app.use('/admin', adminRoutes);
 
 // adsRoutes
 const adsRoutes = require("./routes/ads.routes");
