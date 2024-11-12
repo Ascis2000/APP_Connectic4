@@ -1,0 +1,11 @@
+
+each ad in ads
+    .card
+        img(src=ad.imgSrc, alt="Imagen del evento", class="event-image")
+        .card-content
+            h3.card-title= ad.title
+            label.card-title= ad._id
+            p.card-details= ad.subtitle
+            p.card-details= ad.organizer
+            p.card-details= ad.description
+            a.event-link(href=ad.urlWeb target='_blank') Ver evento

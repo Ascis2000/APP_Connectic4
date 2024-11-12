@@ -16,10 +16,10 @@ const queries = {
         WHERE id = $5
     `,
 
-    deleteUser: `
+    /* deleteUser: `
         DELETE FROM users
         WHERE id = $1
-    `
+    ` */
 };
 
-module.exports = queries;
+
