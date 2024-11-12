@@ -12,7 +12,12 @@ const queries = {
     `,
 
     findUserByUsername: `SELECT * FROM users WHERE username = $1`
+    ,
+
+    deleteUser: `
+        DELETE FROM users
+        WHERE id = $1
+    `
 };
 
 module.exports = queries;
-

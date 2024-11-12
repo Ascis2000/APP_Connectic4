@@ -30,5 +30,15 @@ async function updateUser(id, username, email, password, role) {
     return result.rows[0];
 }
 
+// Controlador para eliminar un usuario
+const removeUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+        await deleteUser(id);
+        res.json({ message: 'Usuario eliminado correctamente' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al eliminar usuario' });
+    }
+};
 
-module.exports = { registerUser, updateUser };
+module.exports = { registerUser, updateUser, removeUser };
