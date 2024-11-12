@@ -28,12 +28,14 @@ app.use(express.json());
 // Rutas
 // userRoutes
 app.use(userRoutes);
+app.use('/favorites', favoritesRoutes);
 
 // authRoutes
 app.use(authRoutes);
 
 // adsRoutes
 const adsRoutes = require("./routes/ads.routes");
+const favoriteRoutes = require("./routes/ads.routes");
 
 // Usa adRoutes para la ruta raíz
 app.use('/', adsRoutes);
