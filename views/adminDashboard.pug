@@ -1,6 +1,19 @@
+//- adminDashboard.pug
+
 extends layout
 
 block content
-  h1 Panel de Administración
-  p Bienvenido, Administrador.
-  p Aquí puedes gestionar usuarios y ver estadísticas.
+  h1 Administración de Usuarios
+
+  // Imprimir el valor de `users` directamente en la página para depuración
+  p Usuarios obtenidos para depuración: #{JSON.stringify(users)}
+  
+  #user-list
+    if users && users.length
+      each user in users
+        .user(data-id=user.id)
+          p Username: #{user.username}
+          p Email: #{user.email}
+          p Role: #{user.role}
+    else
+      p No hay usuarios disponibles
