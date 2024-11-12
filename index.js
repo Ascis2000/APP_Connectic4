@@ -24,10 +24,12 @@ app.use(express.json());
 
 // Rutas
 app.use(authRoutes);
-app.get('/', (req, res) => {
-    res.render('index'); // Renderiza la plantilla `index.pug`
-});
 
+// Rutas API para ads
+const adsRoutes = require("./routes/ads.routes");
+
+// Usa adRoutes para la ruta raíz
+app.use('/', adsRoutes);
 
 const manage404 = require('./middlewares/manage404');
 app.use('*', manage404);
