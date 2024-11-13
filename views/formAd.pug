@@ -1,0 +1,34 @@
+
+doctype html
+
+html
+  head
+    title Crear Anuncio
+  body
+    h1 Ingrese los datos del evento
+
+    form(action="/ads" method="POST")
+      div
+        label(for="title") Título:
+        input(type="text" id="title" name="title" required)
+
+      div
+        label(for="subtitle") Subtítulo:
+        input(type="text" id="subtitle" name="subtitle" required)
+
+      div
+        label(for="description") Descripción:
+        textarea(id="description" name="description" required)
+
+      div
+        label(for="urlWeb") URL del sitio web:
+        input(type="url" id="urlWeb" name="urlWeb" required)
+
+      div
+        label(for="imgSrc") Seleccionar Imagen:
+        input(type="text" id="imgSrc" name="imgSrc" required)
+
+      div
+        button(type="submit") Enviar
+
+

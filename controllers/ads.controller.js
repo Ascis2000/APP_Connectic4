@@ -31,11 +31,27 @@ const getAllAds = async (req, res) => {
     }
 };
 
+// GET, Mostramos formulario
+const showFormOneAd = async (req, res) => {
+    try {
+        res.render('formAd', { 
+            
+        });
+    } catch (error) {
+        res.status(500).json({ mensaje: error.message });
+    }
+};
+
 // POST: CREATE
 const createOneAd = async (req, res) => {
     try {
         const nuevoAd = await adService.createOneAd(req.body);
-        res.status(201).json(nuevoAd);
+
+        const misAds = await adService.getAllAds();
+        const message = "Evento añadido";
+
+        // redirijo a la pagina de dashboard
+        res.redirect('/admin/dashboard');
     } catch (error) {
         res.status(500).json({ mensaje: error.message });
     }
@@ -83,7 +99,7 @@ const updateAd = async (req, res) => {
 // DELETE
 const deleteAd = async (req, res) => {
     try {
-
+        
         const deleteAd = await adService.deleteAd(req.params.id);
         
         if (deleteAd) {
@@ -106,6 +122,7 @@ const deleteAd = async (req, res) => {
 module.exports = {
     getOneAd,
     getAllAds,
+    showFormOneAd,
     createOneAd,
     getAdsSearch,
     updateAd,

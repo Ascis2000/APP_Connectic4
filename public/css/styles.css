@@ -249,6 +249,14 @@ body {
   margin-bottom: 8px;
 }
 
+.delete-icon {
+  text-align: right; /* Coloca el ícono al final de la tarjeta */
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
 .event-link {
   display: inline-block;
   margin-top: 10px;

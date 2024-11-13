@@ -1,32 +1,32 @@
 
-function deleteAd_0(anuncioId) {
-	// Coloca el ID del anuncio en el campo oculto del formulario
-	
-	const form = document.forms['deleteForm'];
-	form.action = `/ads/delete/${anuncioId}`;
-
-    // Envía el formulario
-    form.submit();
-}
-
 function deleteAd(adId) {
 
-	fetch(`/ads/delete/${adId}`, {
-		method: 'DELETE',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	})
-	.then(response => {
-		if (response.ok) {
-			console.log(`Anuncio con id ${adId} eliminado.`);
-			// Aquí puedes hacer algo después de eliminar el anuncio, por ejemplo, actualizar la UI.
-			// Llamar a una función para actualizar la lista de anuncios, por ejemplo.
-		} else {
-			console.error('Error al eliminar el anuncio');
-		}
-	})
-	.catch(error => {
-		console.error('Hubo un problema con la solicitud Fetch:', error);
-	});
+	const confirmation = window.confirm(
+		"Se va a proceder a borrar el Anuncio con id:\n '" + adId + "'\nEsta acción no se puede deshacer."
+	);
+    
+    if (confirmation) {
+        fetch(`/ads/delete/${adId}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+		.then(response => {
+			if (response.ok) {
+				alert(`Anuncio con id: '${adId}', ha sido eliminado.`);
+				window.location.href="/admin/dashboard";
+
+			} else {
+				console.error('Error al eliminar el anuncio');
+			}
+		})
+		.catch(error => {
+			console.error('Hubo un problema con la solicitud Fetch:', error);
+		});
+    } else {
+        console.log("Eliminación cancelada.");
+    }
+
+	
 }
