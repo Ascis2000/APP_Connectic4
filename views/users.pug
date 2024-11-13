@@ -1,0 +1,15 @@
+// users.pug
+doctype html
+html
+  head
+    title Lista de Usuarios
+  body
+    h1 Usuarios Registrados
+    ul
+      each user in users
+        li
+          span #{user.username} - #{user.email}
+          a(href=`/admin/users/edit/${user.id}`) Editar
+          form(action=`/admin/users/delete/${user.id}` method="post" style="display:inline")
+            button(type="submit") Eliminar
+
