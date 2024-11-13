@@ -1,6 +1,7 @@
 const pool = require('../config/db');
 const bcrypt = require('bcryptjs');
-const queries = require('./queries');
+// const queries = require('./queries');
+const queries = require('../queries/queries');
 
 async function createUser(username, password, email, role = 'user') {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -16,4 +17,14 @@ async function findUserByUsername(username) {
     return result.rows[0];
 }
 
-module.exports = { createUser, findUserByUsername };
+// Función para eliminar un usuario
+const deleteUser = async (id) => {
+    try {
+      await client.query(queries.deleteUser, [id]);
+    } catch (error) {
+      console.error('Error al eliminar el usuario:', error);
+      throw error;
+    }
+};
+
+module.exports = { createUser, findUserByUsername, deleteUser };

@@ -1,6 +1,11 @@
+//- adminDashboard.pug
+
 extends layout
 
 block content
-  h1 Panel de Administración
-  p Bienvenido, Administrador.
-  p Aquí puedes gestionar usuarios y ver estadísticas.
+
+    h1 Admin Dashboard
+    form(action="/admin/users" method="get")
+      button(type="submit") Ver Todos los Usuarios
+    form(action="/admin/events" method="get")
+      button(type="submit") Eventos

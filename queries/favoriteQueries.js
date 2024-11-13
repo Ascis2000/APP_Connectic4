@@ -5,10 +5,10 @@ exports.getAllFavorites = async () => {
   return result.rows;
 };
 
-exports.getFavoriteById = async (id) => {
-  const result = await db.query('SELECT * FROM favorites WHERE id_favorite = $1', [id]);
-  return result.rows[0];
-};
+// exports.getFavoriteById = async (id) => {
+//   const result = await db.query('SELECT * FROM favorites WHERE id_favorite = $1', [id]);
+//   return result.rows[0];
+// };
 
 exports.createFavorite = async (favoriteData) => {
   const { user_id } = favoriteData;

@@ -5,9 +5,11 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/users.routes');
+const userRoutes = require('./routes/usersRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const port = 3000;
+
 
 // Middleware para manejar rutas no encontradas (404)
 app.use(express.urlencoded({ extended: true }));
@@ -25,6 +27,11 @@ app.use(express.json());
 // Logger
 /* app.use(morgan(':method :url :status :param[id] - :response-time ms :body')); */
 
+
+// adsRoutes
+const adsRoutes = require("./routes/ads.routes");
+const favoritesRoutes = require("./routes/favoritesRoutes");
+
 // Rutas
 // userRoutes
 app.use(userRoutes);
@@ -32,10 +39,8 @@ app.use('/favorites', favoritesRoutes);
 
 // authRoutes
 app.use(authRoutes);
+app.use('/admin', adminRoutes);
 
-// adsRoutes
-const adsRoutes = require("./routes/ads.routes");
-const favoriteRoutes = require("./routes/ads.routes");
 
 // Usa adRoutes para la ruta raíz
 app.use('/', adsRoutes);
