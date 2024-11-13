@@ -4,7 +4,10 @@ each ad in ads
         img(src=ad.imgSrc, alt="Imagen del evento", class="event-image")
         .card-content
             h3.card-title= ad.title
-            label.card-title= ad._id
+
+            if role === 'admin'
+                label.card-title(onclick=`deleteAd('${ad._id}')`)= 'Borrar Anuncio'
+
             p.card-details= ad.subtitle
             p.card-details= ad.organizer
             p.card-details= ad.description
