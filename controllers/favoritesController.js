@@ -14,15 +14,6 @@ exports.getAllFavorites = async (req, res) => {
   }
 };
 
-// exports.getFavoriteById = async (req, res) => {
-//   try {
-//     const favorite = await favoritesModel.getFavoriteById(req.params.id);
-//     res.json(favorite);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Error al obtener el favorito' });
-//   }
-// };
-
 exports.createFavorite = async (req, res) => {
     try {
     const newFavorite = await favoritesModel.createFavorite(req.body);

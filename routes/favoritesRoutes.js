@@ -3,8 +3,7 @@ const router = express.Router();
 const favoritesController = require('../controllers/favoritesController');
 
 router.get('/api/favorites/', favoritesController.getAllFavorites);
-// router.get('/api/favorites/:id', favoritesController.getFavoriteById);
-router.put('/api/favorites/:id', favoritesController.updateFavorite);
+router.post('/api/favorites/:id', favoritesController.updateFavorite);
 router.delete('/api/favorites/:id', favoritesController.deleteFavorite);
 
 module.exports = router;
@@ -12,7 +11,6 @@ module.exports = router;
 // router.put('/api/user/:id', async (req, res) => {
 //     const { id } = req.params;
 //     const { username, email, password, role } = req.body;
-  
 //     try {
 //       const updatedUser = await updateUser(id, username, email, password, role);
 //       res.status(200).json(updatedUser);
