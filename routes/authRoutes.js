@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { register, login, logout } = require('../controllers/authController');
+const { register, login, mostrarAdmin,logout } = require('../controllers/authController');
 const authMiddleware = require('../middlewares/authMiddleware');
 const authorizeRole = require('../middlewares/roleMiddleware');
 
@@ -16,8 +16,10 @@ router.get('/user/dashboard', authMiddleware, authorizeRole('user'), (req, res) 
     res.render('userDashboard', { role: 'user' });
 });
 
-router.get('/admin/dashboard', authMiddleware, authorizeRole('admin'), (req, res) => {
+/* router.get('/admin/dashboard', authMiddleware, authorizeRole('admin'), (req, res) => {
     res.render('adminDashboard', { role: 'admin' });
-});
+}); */
+
+router.get('/admin/dashboard', authMiddleware, authorizeRole('admin'), mostrarAdmin);
 
 module.exports = router;
