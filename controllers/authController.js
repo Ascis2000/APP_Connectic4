@@ -1,6 +1,7 @@
 const { createUser, findUserByUsername } = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const adService = require('../services/ads.service');
 
 async function register(req, res) {
     const { username, password, email, role = 'user' } = req.body;
@@ -33,4 +34,19 @@ function logout(req, res) {
     res.redirect('/');
 }
 
-module.exports = { register, login, logout };
+const mostrarAdmin = async (req, res) => {
+    try {
+
+        const misAds = await adService.getAllAds();
+
+        res.render('adminDashboard', { 
+            role: 'admin',
+            ads: misAds
+        });
+
+    } catch (error) {
+        res.status(500).json({ mensaje: error.message });
+    }
+};
+
+module.exports = { register, login, mostrarAdmin, logout };

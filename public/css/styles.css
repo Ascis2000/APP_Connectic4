@@ -1,24 +1,76 @@
 /* Configuración básica de la página */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Funnel Display', sans-serif;
   background-color: #000;
   color: #fff;
   margin: 0;
   padding: 0;
+  background-image: url('/assets/img/cruz.png'); /* Cambia la ruta según la ubicación real de tu imagen */
+  background-repeat: repeat;
+  background-position: top left;
+  background-size: 30px auto;
 }
 
 .logo {
   width: 250px; /* Ajusta el ancho según sea necesario */
   height: auto; /* Mantiene la proporción de la imagen */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .navbar {
   background-color: #000;
   color: #fff;
   padding: 10px 20px;
+  background-image: url('/assets/img/cruz.png'); 
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  background-size: 30px auto;
+}
+
+/* Estilo para el formulario */
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+/* Estilo para el campo de entrada de búsqueda */
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 10px;
+  width: 200px;
+}
+
+/* Estilo para el botón de búsqueda */
+.search-button {
+  width: 40px;  
+  height: 40px; 
+  background-color: #000;
+  color: #00ff80;
+  border: 1px solid #00ff80;
+  border-radius: 50%; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; 
+}
+
+.search-button svg {
+  width: 50%; 
+  height: 50%;
+  display: block; 
+}
+
+.search-button:hover {
+  opacity: 0.6;
 }
 
 /* Estilos para el botón de "Registrarse" */
@@ -29,13 +81,13 @@ body {
   padding: 10px 20px;
   color: #000;
   cursor: pointer;
-  font-weight: bold;
   margin-left: 10px;
   font-size: 1em;
+  border-radius: 5px;
 }
 
 .register-button:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 /* Estilos específicos para el botón "Iniciar sesión" */
@@ -45,18 +97,66 @@ body {
   color: #00ff80; /* Texto verde */
   border: 1px solid #00ff80; /* Borde verde */
   padding: 8px 18px;
-  font-weight: bold;
   cursor: pointer;
   font-size: 1em;
+  border-radius: 5px;
   transition: background-color 0.3s, color 0.3s; /* Transiciones para el efecto hover */
 }
 
 /* Efecto hover */
 .login-button:hover {
-  background-color: #00ff80; /* Fondo cambia a verde en hover */
+  background-color: #00cc66c6; /* Fondo cambia a verde en hover */
   color: #000; /* Texto cambia a negro en hover */
 }
+/* NUEVOS ESTILOS PARA INICIO DE SESIÓN */
+.main-container {
+  text-align: center;
+}
 
+.login-title {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  color: #00ff80; 
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #333; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); 
+}
+
+
+.form-label {
+  font-size: 1em;
+  margin-bottom: 8px;
+  color: #00ff80; 
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #00ff80;
+  border-radius: 5px;
+  font-size: 1em;
+  color: #000; 
+  background-color: #fff; 
+}
+
+.form-input:focus {
+  border-color: #00cc66; 
+  outline: none;
+}
+
+/* FIN DE NUEVOS ESTILOS PARA EL FORMULARIO */
 
 /* Banner con imagen de fondo */
 .banner {
@@ -86,18 +186,23 @@ body {
   font-weight: bold;
   line-height: 1.2; /* Ajusta el espaciado entre líneas */
   margin-bottom: 20px;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  color: #000;
+  text-shadow: 2px 2px 4px rgba(252, 250, 250, 0.7);
 }
 
 .banner-content button {
-  background-color: #00ff80;
-  border: none;
+  background-color: #000;
+  border: 1px solid #00ff80;
   padding: 15px 25px;
-  color: #000;
-  font-weight: bold;
+  color: #fff;
   cursor: pointer;
   font-size: 1.2em;
+  border-radius: 5px;
+}
+
+.banner-content button:hover {
+  background-color: #00cc66; 
+  color: #fff; 
 }
 
 /* Contenedor de tarjetas */
@@ -147,14 +252,18 @@ body {
 .event-link {
   display: inline-block;
   margin-top: 10px;
-  color: #00ff80;
+  color: #000; 
+  background-color: #00ff80; 
   text-decoration: none;
-  font-weight: bold;
   font-size: 0.9em;
+  padding: 10px 15px; 
+  border-radius: 5px; 
 }
 
 .event-link:hover {
-  text-decoration: underline;
+  border: 1px solid #000; 
+  background-color: #00ff8087; 
+  opacity: 0.6;
 }
 
 /* Footer */
@@ -166,22 +275,46 @@ footer {
   font-size: 1em;
   border-top: 1px solid #333;
 }
-
-/* Media Queries para ajustes responsivos */
 @media (max-width: 768px) {
   .results {
-    grid-template-columns: repeat(2, 1fr) !important; /* Cambia a 2 columnas en pantallas más pequeñas */
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar img.logo {
+    margin-bottom: 15px;
+  }
+
+  .search-form {
+    margin: 15px 0;
+  }
+
+  .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .login-button,
+  .register-button {
+    padding: 8px 16px;
+    font-size: 0.9em;
   }
 }
 
 @media (max-width: 480px) {
   .results {
-    display: flex !important;
-    flex-direction: column !important; /* Cambia a columna única en pantallas muy pequeñas */
+    display: flex;
+    flex-direction: column;
   }
-
   .card {
-    width: 100% !important; /* Asegura que cada tarjeta ocupe el ancho completo */
+    width: 100%;
   }
 
   .navbar h1 {
@@ -195,5 +328,12 @@ footer {
   .banner-content button {
     padding: 10px 18px;
     font-size: 0.9em;
+  }
+
+  .auth-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
   }
 }

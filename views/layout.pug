@@ -2,13 +2,17 @@ doctype html
 html
   head
     title Sistema de Roles
+    link(rel="stylesheet", href="/css/styles.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@100;200;300;400;500;600;700;800;900&display=swap")
+    script(src="/js/script.js", defer)
   body
-    nav
-      ul
-        if role === 'admin'
-          li: a(href='/admin/dashboard') Panel de Administración
-        else if role === 'user'
-          li: a(href='/user/dashboard') Panel de Usuario
-        li: a(href='/logout') Cerrar sesión
-
+    .main-container
+      nav
+        ul
+          if role === 'admin'
+            li: a(href='/admin/dashboard') Panel de Administración
+          else if role === 'user'
+            li: a(href='/user/dashboard') Panel de Usuario
+          li: a(href='/logout') Cerrar sesión
+        img(src="/assets/img/connectic4_b.png" alt="Connectic4 Logo" class="logo")
     block content

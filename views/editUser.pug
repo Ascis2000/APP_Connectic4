@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title Editar Usuario
+  body
+    if message
+          p(style="color: green;") #{message}
+
+    h1 Editar Usuario
+    form(method='POST', action=`/api/user/${user.id}?_method=PUT`)
+      label(for='username') Nombre de usuario
+      input(type='text', name='username', value=user.username)
+
+      label(for='email') Correo electrónico
+      input(type='email', name='email', value=user.email)
+
+      label(for='password') Contraseña
+      input(type='password', name='password')
+
+      label(for='role') Rol
+      select(name='role')
+        option(value='user', selected=user.role === 'user') Usuario
+        option(value='admin', selected=user.role === 'admin') Admin
+
+      button(type='submit') Actualizar usuario
+
+      a(href="/") Volver a Inicio
+

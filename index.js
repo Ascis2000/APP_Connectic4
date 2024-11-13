@@ -5,12 +5,13 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/usersRoutes');
+const userRoutes = require('./routes/users.routes');
+const methodOverride = require('method-override');
 const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const port = 3000;
 
-
+app.use(methodOverride('_method'));
 // Middleware para manejar rutas no encontradas (404)
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -39,6 +40,14 @@ app.use('/favorites', favoritesRoutes);
 
 // authRoutes
 app.use(authRoutes);
+
+app.put('/api/user/:id', (req, res) => {
+    const userId = req.params.id;
+    const updatedData = req.body;  // Aquí recibirás los datos actualizados
+    // Procesa la actualización del usuario y responde al cliente
+  });
+  
+
 app.use('/admin', adminRoutes);
 
 

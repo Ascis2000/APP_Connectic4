@@ -8,4 +8,7 @@ router.get('/users', adminController.getAllUsers);
 // Ruta para obtener eventos
 router.get('/events', adminController.getEvents);
 
+// Ruta para obtener eventos
+router.get('/scrape', adminController.getEventsScrape);
+
 module.exports = router;
