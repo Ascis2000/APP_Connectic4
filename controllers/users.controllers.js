@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const queries = require('../queries/queries');
 const pool = require('../config/db');
+const { getAllUsersFromDB, deleteUser, updateUser, findUserById } = require('../models/userModel');
 
 // Controlador para registrar un nuevo usuario
 const registerUser = async (req, res) => {
@@ -21,24 +22,49 @@ const registerUser = async (req, res) => {
 };
 
 
-async function updateUser(id, username, email, password, role) {
-    const hashedPassword = await bcrypt.hash(password, 10); // Encripta la nueva contraseña
-    const values = [username, email, hashedPassword, role, id];
+const updateUserController = async (req, res) => {
+    const { id } = req.params;
+    const { username, email, password, role } = req.body;
 
-    // Ejecuta la consulta `updateUser` definida en `queries`
-    const result = await pool.query(queries.updateUser, values);
-    return result.rows[0];
-}
+    if (!password) {
+        // Si la contraseña no se proporciona, podemos usar la contraseña actual sin cambiarla
+        const user = await findUserById(id);
+        password = user.password;
+    }
+
+    try {
+        const updatedUser = await updateUser(id, username, email, password, role);
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        console.error('Error al actualizar usuario:', error);
+        res.status(500).json({ error: 'Error al actualizar usuario' });
+    }
+};
 
 // Controlador para eliminar un usuario
 const removeUser = async (req, res) => {
     const { id } = req.params;
     try {
         await deleteUser(id);
-        res.json({ message: 'Usuario eliminado correctamente' });
+        res.status(200).json({ message: 'Usuario eliminado correctamente' });
     } catch (error) {
-        res.status(500).json({ error: 'Error al eliminar usuario' });
+        console.error('Error al eliminar usuario:', error);
+        if (!res.headersSent) {
+            res.status(500).json({ error: 'Error al eliminar usuario' });
+        }
     }
 };
 
-module.exports = { registerUser, updateUser, removeUser };
+
+// Controlador para obtener todos los usuarios
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await getAllUsersFromDB();
+        res.render('users', { users });
+    } catch (error) {
+        console.error('Error al obtener usuarios:', error);
+        res.status(500).send('Error al obtener usuarios');
+    }
+};
+
+module.exports = { registerUser, updateUser, removeUser, getAllUsers, updateUserController };
