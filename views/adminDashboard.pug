@@ -4,8 +4,28 @@ extends layout
 
 block content
 
-    h1 Admin Dashboard
-    form(action="/admin/users" method="get")
-      button(type="submit") Ver Todos los Usuarios
-    form(action="/admin/events" method="get")
-      button(type="submit") Eventos
+	h1 Admin Dashboard
+	form(action="/admin/users" method="get")
+		button(type="submit") Ver Todos los Usuarios
+
+	form(action="/admin/events" method="get")
+		button(type="submit") Crear Nuevos Eventos
+
+	form(action="/admin/scrape" method="get")
+		button(type="submit") Hacer SCRAPING
+
+	main
+		p Mi role es #{role}
+		label Mensaje: #{message}
+		// Contenedor para las tarjetas de eventos
+		.results#resultsContainer
+
+			if ads && ads.length > 0
+				include listAds.pug
+
+			else
+				p No hay eventos existentes en este momento.
+
+		form#deleteForm(action="/ads/delete" method="POST" style="display: none;")
+			input(type="hidden" name="_method" value="DELETE")
+

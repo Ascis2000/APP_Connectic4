@@ -8,7 +8,6 @@ async function scrapeMeetup() {
     const page = await browser.newPage();
 
     try { 
-        //await page.goto("https://www.meetup.com/es-ES/find/?source=EVENTS&eventType=inPerson&sortField=DATETIME&location=es--Madrid&keywords=programming%20events", {
         await page.goto("https://www.meetup.com/find/?keywords=programming%20events&location=es--Madrid&source=EVENTS", {
             waitUntil: 'domcontentloaded', // Carga básica del HTML
             timeout: 60000 // Tiempo de espera extendido (60 segundos)
@@ -60,6 +59,3 @@ async function scrapeMeetup() {
 }
 
 exports.scrap = scrapeMeetup;
-
-/********** DESCOMENTAR PARA PROBAR *********/
-//scrap("https://www.coolmod.com/novedades/").then(data =>console.log(data))

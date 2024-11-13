@@ -19,48 +19,10 @@ const getOneAd = async (req, res) => {
 // READ
 const getAllAds = async (req, res) => {
     try {
-        const productos = await adService.getAllAds();
-        res.json(productos);
-    } catch (error) {
-        res.status(500).json({ mensaje: error.message });
-    }
-};
 
-const getAllAdsScrape = async (req, res) => {
-    try {
-        // Realiza el scraping
-        let dataScrap = await scraper.scrap();
-        console.log("ARRRAY===============", Array.isArray(dataScrap));
-
-        // Filtra datos de scraping para eliminar duplicados en la BBDD
-        const adUnicos = [];
-        for (const event of dataScrap) {
-            const urlWebBase = event.urlWeb?.split('?')[0].trim();
-            
-            // Verifica si la URL ya existe en la BBDD
-            const existingEvent = await adService.getAdsByUrl(urlWebBase);
-            if (!existingEvent) {
-                adUnicos.push(event);
-            } else {
-                console.log(`Evento duplicado encontrado: ${urlWebBase}`);
-            }
-        }
-
-        // Mensaje por defecto si no se inserta nada nuevo
-        let message = 'Todos los datos de scraping ya existen en la base de datos.';
-
-        // si hay eventos nuevos, inserta en MongoDB y cambia el mensaje
-        if (adUnicos.length > 0) {
-            const result = await adService.crearDatosScraping(adUnicos);
-            message = 'Datos de scraping insertados exitosamente';
-        }
-
-        // obtenemos todos los documentos de la coleccion
         const misAds = await adService.getAllAds();
-        //console.log( "AAAAAAAAAAA=", misAds._id.toString() )
-        // Renderiza la plantilla `index.pug` con el mensaje resultante
+
         res.render('index', { 
-            message,
             ads: misAds
         });
 
@@ -68,7 +30,6 @@ const getAllAdsScrape = async (req, res) => {
         res.status(500).json({ mensaje: error.message });
     }
 };
-
 
 // POST: CREATE
 const createOneAd = async (req, res) => {
@@ -123,10 +84,16 @@ const updateAd = async (req, res) => {
 const deleteAd = async (req, res) => {
     try {
         const deleteAd = await adService.deleteAd(req.params.id);
+
         if (deleteAd) {
-            res.status(200).json({
-                message: `producto eliminado: ${deleteAd.title}`
-            })
+
+            const misAds = await adService.getAllAds();
+            const message = `producto eliminado: ${deleteAd.title}`
+
+            res.render('adminDashboard', { 
+                message,
+                ads: misAds
+            });
         }
     }
     catch (error) {
@@ -138,7 +105,6 @@ const deleteAd = async (req, res) => {
 module.exports = {
     getOneAd,
     getAllAds,
-    getAllAdsScrape,
     createOneAd,
     getAdsSearch,
     updateAd,

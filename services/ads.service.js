@@ -26,27 +26,28 @@ const getOneAd = async (id) => {
 // obtenemos todos los anuncios
 const getAllAds = async () => {
 
-	return await Ads.find({}, '-__v');
+	//devuelve los resultados por titulo
+	return await Ads.find({}, '-__v').sort({ title: 1 });
 };
 
 // creamos un solo anuncio
-async function createOneAd(datosProduct) {
+async function createOneAd(datosAd) {
 
-	const producto = new Ads(datosProduct);
-	return await producto.save();
+	const ad = new Ads(datosAd);
+	return await ad.save();
 }
 
 // insertamos todos los anuncios 'scraping' en la BBDD
-const crearDatosScraping = async (productosArray) => {
+const crearDatosScraping = async (adsArray) => {
 
 	// Verifica si productosArray es un array
-	if (!Array.isArray(productosArray)) {
+	if (!Array.isArray(adsArray)) {
 		throw new Error('Los datos de scraping no son un array válido');
 	}
 
 	// Inserta los productos en la base de datos
 	try {
-		const resultados = await Ads.insertMany(productosArray);
+		const resultados = await Ads.insertMany(adsArray);
 		return resultados;
 
 	} catch (error) {
