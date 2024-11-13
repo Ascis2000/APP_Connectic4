@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 
 //mongoose.set('strictQuery', false);
 mongoose.connect(process.env.DB_MONGO);
-
 const db = mongoose.connection;
 
 // Eventos
