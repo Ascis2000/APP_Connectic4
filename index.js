@@ -55,6 +55,6 @@ const manage404 = require('./middlewares/manage404');
 // Para todo el resto de rutas no contempladas
 app.use('*', manage404);
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server is running on port ${port}`);
 });
