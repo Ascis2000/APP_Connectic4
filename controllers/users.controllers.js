@@ -24,29 +24,46 @@ const registerUser = async (req, res) => {
 
 const updateUserController = async (req, res) => {
     const { id } = req.params;
-    const { username, email, password, role } = req.body;
-
-    if (!password) {
-        // Si la contraseña no se proporciona, podemos usar la contraseña actual sin cambiarla
-        const user = await findUserById(id);
-        password = user.password;
-    }
+    let { username, email, password, role } = req.body;
 
     try {
-        const updatedUser = await updateUser(id, username, email, password, role);
-        res.status(200).json(updatedUser);
+        // Obtén el usuario antes de la actualización para pasar sus datos a la vista
+        const user = await findUserById(id);
+
+        if (!password) {
+            password = user.password; // Usar la contraseña actual
+        } else {
+            password = await bcrypt.hash(password, 10);
+        }
+
+        // Actualizar el usuario
+        await updateUser(id, username, email, password, role);
+
+        // Renderizar la vista con el mensaje y el objeto user
+        res.status(200).render('editUser', {
+            message: 'Usuario actualizado con éxito.',
+            user: {
+                id: user.id,
+                username,
+                email,
+                role
+            }
+        });
     } catch (error) {
         console.error('Error al actualizar usuario:', error);
-        res.status(500).json({ error: 'Error al actualizar usuario' });
+        res.status(500).render('editUser', { message: 'Error al actualizar usuario.' });
     }
 };
 
+
+
+
 // Controlador para eliminar un usuario
-const removeUser = async (req, res) => {
+const removeUser = async (req, res, next) => {
     const { id } = req.params;
     try {
         await deleteUser(id);
-        res.status(200).json({ message: 'Usuario eliminado correctamente' });
+        next(); // Llama a `next` en lugar de enviar la respuesta
     } catch (error) {
         console.error('Error al eliminar usuario:', error);
         if (!res.headersSent) {
