@@ -19,6 +19,6 @@ router.put("/:id", adsController.updateAd);
 
 // http://localhost:3000/api/ads/1
 // Usamos POST porque no admite delete desde javascript
-router.post("/ads/delete/:id?", adsController.deleteAd);
+router.delete("/ads/delete/:id?", adsController.deleteAd);
 
 module.exports = router;
