@@ -83,8 +83,9 @@ const updateAd = async (req, res) => {
 // DELETE
 const deleteAd = async (req, res) => {
     try {
-        const deleteAd = await adService.deleteAd(req.params.id);
 
+        const deleteAd = await adService.deleteAd(req.params.id);
+        
         if (deleteAd) {
 
             const misAds = await adService.getAllAds();

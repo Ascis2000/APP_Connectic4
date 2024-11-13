@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/users.routes');
 const methodOverride = require('method-override');
-// const adminRoutes = require('./routes/adminRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 const app = express();
 const port = 3000;
 
@@ -42,7 +42,7 @@ app.put('/api/user/:id', (req, res) => {
   });
   
 
-// app.use('/admin', adminRoutes);
+app.use('/admin', adminRoutes);
 
 // adsRoutes
 const adsRoutes = require("./routes/ads.routes");
