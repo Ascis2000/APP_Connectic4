@@ -1,5 +1,4 @@
 
-
 // // models/favoritesModel.js
 // const favoritesQueries = require('../queries/favoriteQueries');
 // const pool = require('../config/db'); // Asegúrate de que esta ruta sea correcta
