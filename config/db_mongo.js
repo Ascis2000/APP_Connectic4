@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 //mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://localhost/c4-web')
+mongoose.connect(process.env.DB_MONGO);
 
 const db = mongoose.connection;
 
