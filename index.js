@@ -8,7 +8,7 @@ const userRoutes = require('./routes/users.routes');
 const methodOverride = require('method-override');
 const adminRoutes = require('./routes/adminRoutes');
 const adsRoutes = require("./routes/ads.routes");
-const favoritesRoutes = require("./routes/favoritesRoutes");
+// const favoritesRoutes = require("./routes/favoritesRoutes");
 const app = express();
 const port = 3000;
 
@@ -39,7 +39,7 @@ app.use(express.json());
 // Rutas
 // userRoutes
 app.use(userRoutes);
-app.use('/', favoritesRoutes);
+// app.use('/', favoritesRoutes);
 
 // authRoutes
 app.use(authRoutes);
