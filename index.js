@@ -26,14 +26,6 @@ app.set('views', './views'); // Asegúrate de que el directorio `views` exista y
 
 app.use(express.json());
 
-// Logger
-/* app.use(morgan(':method :url :status :param[id] - :response-time ms :body')); */
-// Conectar a MongoDB
-// connectMongo().then(() => {
-//   console.log("Conectado a MongoDB");
-// }).catch((error) => {
-//   console.error("Error de conexión a MongoDB:", error);
-// });
 
 
 // Rutas
