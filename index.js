@@ -58,3 +58,6 @@ app.use('*', manage404);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+//Esto se usa para leer __test__ 
+module.exports = app;
