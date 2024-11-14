@@ -49,4 +49,19 @@ const mostrarAdmin = async (req, res) => {
     }
 };
 
-module.exports = { register, login, mostrarAdmin, logout };
+const mostrarUser = async (req, res) => {
+    try {
+
+        const misAds = await adService.getAllAds();
+
+        res.render('userDashboard', { 
+            role: 'user',
+            ads: misAds
+        });
+
+    } catch (error) {
+        res.status(500).json({ mensaje: error.message });
+    }
+};
+
+module.exports = { register, login, mostrarAdmin, logout, mostrarUser };
