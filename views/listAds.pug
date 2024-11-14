@@ -14,5 +14,5 @@ each ad in ads
                 if role === 'admin'
                     i.fas.fa-trash.delete-icon(onclick=`deleteAd('${ad._id}')`, title='Eliminar anuncio')
                     i.fas.fa-edit.edit-icon(onclick=`editAd('${ad._id}')`, title='Editar anuncio')
+                if role === 'user'    
                     i.fas.fa-star.favorite-icon(onclick=`addFavorites('${ad._id}')`, title='Añadir a Favoritos') &nbsp;
-
