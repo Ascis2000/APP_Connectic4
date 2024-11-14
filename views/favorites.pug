@@ -1,0 +1,9 @@
+doctype html
+html
+  head
+    title Lista de favoritos
+  body
+    h1 favoritos Registrados
+    ul
+      each itemFavorite in fav
+        li #{itemFavorite.username} - #{itemFavorite.email}
