@@ -28,14 +28,11 @@ router.get('/admin/users/edit/:id', async (req, res) => {
 // Ruta para eliminar un usuario
 router.delete('/users/:id', removeUser);
 
-router.post('/admin/users/delete/:id', async (req, res) => {
-  try {
-      await removeUser(req, res);
-      res.redirect('/admin/users');
-  } catch (error) {
-      res.status(500).send('Error al eliminar el usuario');
-  }
-})
+router.post('/admin/users/delete/:id', removeUser, (req, res) => {
+  res.redirect('/admin/users');
+});
+
+
 
 router.put('/api/user/:id', updateUserController);
 

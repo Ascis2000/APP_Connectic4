@@ -1,9 +1,8 @@
 
 const mongoose = require("mongoose");
 
-//mongoose.connect('mongodb://localhost/c4-web')
-//mongoose.connect('mongodb+srv://Juanjo:MUeEQMxs8zzM6feA@connectic4.88isr.mongodb.net/')
-mongoose.connect(process.env.DB_MONGO)
+//mongoose.set('strictQuery', false);
+mongoose.connect(process.env.DB_MONGO);
 
 const db = mongoose.connection;
 

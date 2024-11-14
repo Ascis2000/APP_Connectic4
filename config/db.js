@@ -11,3 +11,11 @@ const pool = new Pool({
 });
 
 module.exports = pool;
+
+//  DB_USER=postgres
+//  DB_HOST=localhost
+//  DB_NAME=postgres
+//  DB_PASS=123456
+//  DB_PORT=5432
+//  JWT_SECRET=tu_secreto_para_jwt
+//  PORT=3000
