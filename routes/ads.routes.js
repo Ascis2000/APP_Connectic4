@@ -17,8 +17,8 @@ router.get("/:id?", adsController.getOneAd);
 // http://localhost:3000/api/ads/
 router.post("/ads", adsController.createOneAd);
 
-// http://localhost:3000/api/ads/
-router.put("/:id", adsController.updateAd);
+// http://localhost:3000/ads/update/:id
+router.put("/ads/update/:id", adsController.updateAd);
 
 // http://localhost:3000/ads/delete/1
 router.delete("/ads/delete/:id?", adsController.deleteAd);

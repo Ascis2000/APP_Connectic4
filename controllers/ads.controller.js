@@ -81,12 +81,21 @@ const getAdsSearch = async (req, res) => {
     }
 }
 
-// UPATE
+// PUT
 const updateAd = async (req, res) => {
     try {
         if(req.params.id){
+            console.log("req.params.id======", req.params.id)
+            console.log("req.body======", req.body)
             const updateAd = await adService.updateAd(req.params.id, req.body);
-            res.status(200).json({mensaje: "Ad editado!", updateAd});
+
+            const misAds = await adService.getAllAds();
+            const message = `Anuncio modificado: ${updateAd.title}`
+
+            res.render('adminDashboard', { 
+                message,
+                ads: misAds
+            });
         }
         else{
             return res.status(400).json({ mensaje: "ID del anuncio requerido" });
