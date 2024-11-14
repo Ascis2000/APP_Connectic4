@@ -29,6 +29,10 @@ body {
   background-size: 30px auto;
 }
 
+.navbar-list {
+  list-style-type: none; /* Quita los puntos */
+}
+
 /* Estilo para el formulario */
 .search-form {
   display: flex;
@@ -108,6 +112,27 @@ body {
   background-color: #00cc66c6; /* Fondo cambia a verde en hover */
   color: #000; /* Texto cambia a negro en hover */
 }
+
+/* "Cerrar sesión" */
+.logout-button {
+  background-color: #000; /* Fondo negro */
+  color: #ff5f1f; /* Texto verde */
+  border: 1px solid #ff5f1f; /* Borde verde */
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-size: 1em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #ff5f1fc4; /* Fondo cambia a verde en hover */
+  color: #000; /* Texto cambia a negro en hover */
+  opacity: 0.8;
+}
+
+
 /* NUEVOS ESTILOS PARA INICIO DE SESIÓN */
 .main-container {
   text-align: center;
@@ -157,6 +182,357 @@ body {
 }
 
 /* FIN DE NUEVOS ESTILOS PARA EL FORMULARIO */
+
+/* Estilo para el título de Admin Dashboard */
+.admin-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: #00ff80;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Contenedor de botones en línea */
+.button-container {
+  display: flex;
+  justify-content: center; /* Centra los botones en el contenedor */
+  gap: 20px; /* Espacio entre los botones */
+  margin-top: 20px; /* Espacio superior */
+}
+
+/* Estilos de los formularios individuales */
+.view-users-form, .create-events-form, .scraping-form {
+  margin: 0; /* Quita el margen de cada formulario */
+}
+
+/* Estilos de los botones */
+.view-users-button, .create-events-button {
+  background-color: #000;
+  color: #00ff80;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: 1px solid #00ff80;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.view-users-button:hover, .create-events-button:hover {
+  background-color: #00cc66;
+  color: #000;
+}
+
+.scraping-button {
+  background-color: #000;
+  color: #9ce2ff; 
+  padding: 10px 20px;
+  font-size: 1em;
+  border: 1px solid #9ce2ff; 
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.scraping-button:hover {
+  background-color: #9ce1ffd2; /* Fondo naranja más claro en hover */
+  color: #000; /* Texto negro en hover */
+}
+/* Estilos para el mensaje de rol e información */
+.admin-info {
+  margin-top: 20px;
+  padding: 15px;
+  text-align: center;
+  color: #fff;
+}
+
+.admin-role {
+  font-size: 1.2em;
+  color: #00ff80;
+}
+
+.admin-message {
+  font-size: 1em;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+/* Estilo para el botón de "Volver a Inicio" */
+a[href="/admin/dashboard"] {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #000; /* Fondo verde */
+  color: #00ff80; /* Texto negro */
+  text-decoration: none;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #00cc66; /* Borde verde más oscuro */
+  transition: background-color 0.3s, color 0.3s;
+}d
+
+a[href="/admin/dashboard"]:hover {
+  background-color: #00cc66; /* Fondo más oscuro al hacer hover */
+  color: #fff; /* Texto blanco en hover */
+}
+
+/* Estilo para el contenedor del formulario de edición de usuario */
+.edit-user-form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  background-color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Título del formulario */
+.edit-user-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #00ff80;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Mensaje de éxito (mensaje en verde) */
+.success-message {
+  color: #00cc66;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Estilo de etiquetas y campos del formulario de edición */
+.edit-user-form label {
+  display: block;
+  font-size: 1em;
+  color: #00ff80;
+  margin-bottom: 5px;
+}
+
+.edit-user-form input[type="text"],
+.edit-user-form input[type="email"],
+.edit-user-form input[type="password"],
+.edit-user-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #00ff80;
+  border-radius: 5px;
+  background-color: #222;
+  color: #fff;
+  font-size: 1em;
+}
+
+.edit-user-form input[type="text"]:focus,
+.edit-user-form input[type="email"]:focus,
+.edit-user-form input[type="password"]:focus,
+.edit-user-form select:focus {
+  outline: none;
+  border-color: #00cc66;
+}
+
+/* Botón de actualización de usuario */
+.edit-user-form button[type="submit"] {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #00ff80;
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-user-form button[type="submit"]:hover {
+  background-color: #00cc66;
+}
+
+/* Enlace "Volver a Inicio" */
+a.return-to-dashboard {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #000;
+  color: #00ff80;
+  text-decoration: none;
+  font-size: 1em;
+  border: 1px solid #00ff80;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a.return-to-dashboard:hover {
+  background-color: #00ff80;
+  color: #000;
+}
+
+/* Contenedor para el formulario de creación de anuncios */
+.create-ad-form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  background-color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Título del formulario */
+.create-ad-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #00ff80;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilo de etiquetas y campos de entrada en el formulario */
+.create-ad-form label {
+  display: block;
+  font-size: 1em;
+  color: #00ff80;
+  margin-bottom: 5px;
+}
+
+.create-ad-form input[type="text"],
+.create-ad-form input[type="url"],
+.create-ad-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #00ff80;
+  border-radius: 5px;
+  background-color: #222;
+  color: #fff;
+  font-size: 1em;
+  resize: vertical; /* Permite redimensionar verticalmente el textarea */
+}
+
+.create-ad-form input[type="text"]:focus,
+.create-ad-form input[type="url"]:focus,
+.create-ad-form textarea:focus {
+  outline: none;
+  border-color: #00cc66;
+}
+
+/* Botón de envío del formulario */
+.create-ad-form button[type="submit"] {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #00ff80;
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-ad-form button[type="submit"]:hover {
+  background-color: #00cc66;
+}
+
+/* Contenedor para la tabla de usuarios */
+.users-table-container {
+  width: 80%; /* Reduce el ancho de la tabla */
+  margin: 20px auto; /* Centra la tabla y le da un margen superior */
+  border: 1px solid #333; /* Borde para resaltar la tabla */
+  border-radius: 8px;
+  overflow: hidden; /* Quita los bordes sobrantes */
+}
+
+/* Estilos para la tabla de usuarios */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em; /* Reduce un poco el tamaño del texto */
+  color: #fff;
+  text-align: left;
+  background-color: #1a1a1a; /* Fondo general de la tabla */
+}
+
+.users-table th, .users-table td {
+  padding: 12px 15px;
+}
+
+.users-table th {
+  background-color: #333; /* Fondo oscuro para el encabezado */
+  color: #00ff80; /* Texto en verde */
+  font-weight: bold;
+}
+
+.users-table tbody tr:nth-child(even) {
+  background-color: #2a2a2a; /* Color de fondo para filas pares */
+}
+
+.users-table tbody tr:nth-child(odd) {
+  background-color: #1e1e1e; /* Color de fondo para filas impares */
+}
+
+.users-table tbody tr:hover {
+  background-color: #333; /* Color de fondo en hover */
+}
+
+/* Estilos para las acciones */
+.actions {
+  display: flex;
+  gap: 10px; /* Espacio entre los iconos */
+}
+
+/* Estilos para el botón de edición */
+.edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s;
+}
+
+.edit-button svg {
+  fill: #00ff80; /* Color verde para el icono de edición */
+}
+
+.edit-button:hover {
+  transform: scale(1.1); /* Efecto hover */
+}
+
+/* Estilos para el botón de borrado */
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s;
+}
+
+.delete-button svg {
+  fill: #ff4500; /* Color rojo para el icono de eliminación */
+}
+
+.delete-button:hover {
+  transform: scale(1.1); /* Efecto hover */
+}
+
+
+/* Estilos para el contenedor de eventos */
+#resultsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.no-events-message {
+  font-size: 1em;
+  color: #ccc;
+  text-align: center;
+}
+
 
 /* Banner con imagen de fondo */
 .banner {

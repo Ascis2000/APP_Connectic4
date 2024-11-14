@@ -2,27 +2,29 @@ doctype html
 html
   head
     title Editar Usuario
+    link(rel="stylesheet", href="/css/styles.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@100;200;300;400;500;600;700;800;900&display=swap")
   body
     if message
-          p(style="color: green;") #{message}
+      p.success-message #{message}
 
-    h1 Editar Usuario
-    form(method='POST', action=`/api/user/${user.id}?_method=PUT`)
-      label(for='username') Nombre de usuario
-      input(type='text', name='username', value=user.username)
+    .edit-user-form-container
+      h1.edit-user-title Editar Usuario
+      form.edit-user-form(method='POST', action=`/api/user/${user.id}?_method=PUT`)
+        label(for='username') Nombre de usuario
+        input(type='text', name='username', value=user.username)
 
-      label(for='email') Correo electrónico
-      input(type='email', name='email', value=user.email)
+        label(for='email') Correo electrónico
+        input(type='email', name='email', value=user.email)
 
-      label(for='password') Contraseña
-      input(type='password', name='password')
+        label(for='password') Contraseña
+        input(type='password', name='password')
 
-      label(for='role') Rol
-      select(name='role')
-        option(value='user', selected=user.role === 'user') Usuario
-        option(value='admin', selected=user.role === 'admin') Admin
+        label(for='role') Rol
+        select(name='role')
+          option(value='user', selected=user.role === 'user') Usuario
+          option(value='admin', selected=user.role === 'admin') Admin
 
-      button(type='submit') Actualizar usuario
+        button(type='submit') Actualizar usuario
 
-      a(href="/admin/dashboard") Volver a Inicio
-
+      a.return-to-dashboard(href="/admin/dashboard") Volver a Inicio

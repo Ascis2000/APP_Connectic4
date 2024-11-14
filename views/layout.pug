@@ -8,11 +8,11 @@ html
   body
     .main-container
       nav
-        ul
+        ul.navbar-list
           if role === 'admin'
-            li: a(href='/admin/dashboard') Panel de Administración
+            //-li: a(href='/admin/dashboard') Panel de Administración
           else if role === 'user'
             li: a(href='/user/dashboard') Panel de Usuario
-          li: a(href='/logout') Cerrar sesión
+          li: a(href='/logout' class="logout-button") Cerrar sesión
         img(src="/assets/img/connectic4_b.png" alt="Connectic4 Logo" class="logo")
     block content

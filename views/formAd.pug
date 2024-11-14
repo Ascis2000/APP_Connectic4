@@ -1,34 +1,28 @@
-
 doctype html
 
 html
   head
     title Crear Anuncio
+    link(rel="stylesheet", href="/css/styles.css")
   body
-    h1 Ingrese los datos del evento
+    .create-ad-form-container
+      h1.create-ad-title Ingrese los datos del evento
 
-    form(action="/ads" method="POST")
-      div
-        label(for="title") Título:
-        input(type="text" id="title" name="title" required)
+      form.create-ad-form(action="/ads" method="POST")
+        div
+          input(type="text" id="title" name="title" placeholder="Título" required)
 
-      div
-        label(for="subtitle") Subtítulo:
-        input(type="text" id="subtitle" name="subtitle" required)
+        div
+          input(type="text" id="subtitle" name="subtitle" placeholder="Subtítulo" required)
 
-      div
-        label(for="description") Descripción:
-        textarea(id="description" name="description" required)
+        div
+          textarea(id="description" name="description" placeholder="Descripción" required)
 
-      div
-        label(for="urlWeb") URL del sitio web:
-        input(type="url" id="urlWeb" name="urlWeb" required)
+        div
+          input(type="url" id="urlWeb" name="urlWeb" placeholder="URL del sitio web" required)
 
-      div
-        label(for="imgSrc") Seleccionar Imagen:
-        input(type="text" id="imgSrc" name="imgSrc" required)
+        div
+          input(type="text" id="imgSrc" name="imgSrc" placeholder="Seleccionar Imagen" required)
 
-      div
-        button(type="submit") Enviar
-
-
+        div
+          button(type="submit") Enviar
