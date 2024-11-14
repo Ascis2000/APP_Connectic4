@@ -1,19 +1,18 @@
-/* Configuración básica de la página */
 body {
   font-family: 'Funnel Display', sans-serif;
   background-color: #000;
   color: #fff;
   margin: 0;
   padding: 0;
-  background-image: url('/assets/img/cruz.png'); /* Cambia la ruta según la ubicación real de tu imagen */
+  background-image: url('/assets/img/cruz.png'); 
   background-repeat: repeat;
   background-position: top left;
   background-size: 30px auto;
 }
 
 .logo {
-  width: 250px; /* Ajusta el ancho según sea necesario */
-  height: auto; /* Mantiene la proporción de la imagen */
+  width: 250px; 
+  height: auto; 
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
@@ -29,7 +28,10 @@ body {
   background-size: 30px auto;
 }
 
-/* Estilo para el formulario */
+.navbar-list {
+  list-style-type: none; 
+}
+
 .search-form {
   display: flex;
   align-items: center;
@@ -37,7 +39,7 @@ body {
   margin: 20px;
 }
 
-/* Estilo para el campo de entrada de búsqueda */
+/* campo de entrada de búsqueda */
 .search-input {
   padding: 10px;
   border: 1px solid #ccc;
@@ -47,7 +49,6 @@ body {
   width: 200px;
 }
 
-/* Estilo para el botón de búsqueda */
 .search-button {
   width: 40px;  
   height: 40px; 
@@ -73,7 +74,7 @@ body {
   opacity: 0.6;
 }
 
-/* Estilos para el botón de "Registrarse" */
+
 .register-button {
   text-decoration: none;
   background-color: #00ff80;
@@ -90,25 +91,42 @@ body {
   opacity: 0.6;
 }
 
-/* Estilos específicos para el botón "Iniciar sesión" */
 .login-button {
   text-decoration: none;
-  background-color: #000; /* Fondo negro */
-  color: #00ff80; /* Texto verde */
-  border: 1px solid #00ff80; /* Borde verde */
+  background-color: #000; 
+  color: #00ff80; 
+  border: 1px solid #00ff80; 
   padding: 8px 18px;
   cursor: pointer;
   font-size: 1em;
   border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s; /* Transiciones para el efecto hover */
+  transition: background-color 0.3s, color 0.3s; 
 }
 
-/* Efecto hover */
 .login-button:hover {
-  background-color: #00cc66c6; /* Fondo cambia a verde en hover */
-  color: #000; /* Texto cambia a negro en hover */
+  background-color: #00cc66c6; 
+  color: #000; 
 }
-/* NUEVOS ESTILOS PARA INICIO DE SESIÓN */
+
+
+.logout-button {
+  background-color: #000; 
+  color: #ff5f1f;
+  border: 1px solid #ff5f1f; 
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-size: 1em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #ff5f1fc4; 
+  color: #000; 
+  opacity: 0.8;
+}
+
 .main-container {
   text-align: center;
 }
@@ -156,13 +174,343 @@ body {
   outline: none;
 }
 
-/* FIN DE NUEVOS ESTILOS PARA EL FORMULARIO */
+.admin-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: #00ff80;
+  text-align: center;
+  margin-top: 20px;
+}
 
-/* Banner con imagen de fondo */
+.button-container {
+  display: flex;
+  justify-content: center; 
+  gap: 20px; 
+  margin-top: 20px;
+}
+
+.view-users-form, .create-events-form, .scraping-form {
+  margin: 0; 
+}
+
+.view-users-button, .create-events-button {
+  background-color: #000;
+  color: #00ff80;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: 1px solid #00ff80;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.view-users-button:hover, .create-events-button:hover {
+  background-color: #00cc66;
+  color: #000;
+}
+
+.scraping-button {
+  background-color: #000;
+  color: #9ce2ff; 
+  padding: 10px 20px;
+  font-size: 1em;
+  border: 1px solid #9ce2ff; 
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.scraping-button:hover {
+  background-color: #9ce1ffd2; 
+  color: #000; 
+}
+
+.admin-info {
+  margin-top: 20px;
+  padding: 15px;
+  text-align: center;
+  color: #fff;
+}
+
+.admin-role {
+  font-size: 1.2em;
+  color: #00ff80;
+}
+
+.admin-message {
+  font-size: 1em;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+a[href="/admin/dashboard"] {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #000; 
+  color: #00ff80; 
+  text-decoration: none;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #00cc66; 
+  transition: background-color 0.3s, color 0.3s;
+}d
+
+a[href="/admin/dashboard"]:hover {
+  background-color: #00cc66; 
+  color: #fff; 
+}
+
+/* contenedor del formulario de edición de usuario */
+.edit-user-form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  background-color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.edit-user-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #00ff80;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  color: #00cc66;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.edit-user-form label {
+  display: block;
+  font-size: 1em;
+  color: #00ff80;
+  margin-bottom: 5px;
+}
+
+.edit-user-form input[type="text"],
+.edit-user-form input[type="email"],
+.edit-user-form input[type="password"],
+.edit-user-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #00ff80;
+  border-radius: 5px;
+  background-color: #222;
+  color: #fff;
+  font-size: 1em;
+}
+
+.edit-user-form input[type="text"]:focus,
+.edit-user-form input[type="email"]:focus,
+.edit-user-form input[type="password"]:focus,
+.edit-user-form select:focus {
+  outline: none;
+  border-color: #00cc66;
+}
+
+/* Botón de actualización de usuario */
+.edit-user-form button[type="submit"] {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #00ff80;
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-user-form button[type="submit"]:hover {
+  background-color: #00cc66;
+}
+
+a.return-to-dashboard {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #000;
+  color: #00ff80;
+  text-decoration: none;
+  font-size: 1em;
+  border: 1px solid #00ff80;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a.return-to-dashboard:hover {
+  background-color: #00ff80;
+  color: #000;
+}
+
+.create-ad-form-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  background-color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.create-ad-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #00ff80;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.create-ad-form label {
+  display: block;
+  font-size: 1em;
+  color: #00ff80;
+  margin-bottom: 5px;
+}
+
+.create-ad-form input[type="text"],
+.create-ad-form input[type="url"],
+.create-ad-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #00ff80;
+  border-radius: 5px;
+  background-color: #222;
+  color: #fff;
+  font-size: 1em;
+  resize: vertical; 
+}
+
+.create-ad-form input[type="text"]:focus,
+.create-ad-form input[type="url"]:focus,
+.create-ad-form textarea:focus {
+  outline: none;
+  border-color: #00cc66;
+}
+
+/* botón de envío del formulario */
+.create-ad-form button[type="submit"] {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #00ff80;
+  color: #000;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-ad-form button[type="submit"]:hover {
+  background-color: #00cc66;
+}
+
+/* tabla de usuarios */
+.users-table-container {
+  width: 80%; 
+  margin: 20px auto; 
+  border: 1px solid #333; 
+  border-radius: 8px;
+  overflow: hidden; 
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em; 
+  color: #fff;
+  text-align: left;
+  background-color: #1a1a1a; 
+}
+
+.users-table th, .users-table td {
+  padding: 12px 15px;
+}
+
+.users-table th {
+  background-color: #333; 
+  color: #00ff80; 
+  font-weight: bold;
+}
+
+.users-table tbody tr:nth-child(even) {
+  background-color: #2a2a2a; 
+}
+
+.users-table tbody tr:nth-child(odd) {
+  background-color: #1e1e1e; 
+}
+
+.users-table tbody tr:hover {
+  background-color: #333; 
+}
+
+.actions {
+  display: flex;
+  gap: 10px; 
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s;
+}
+
+.edit-button svg {
+  fill: #00ff80; 
+}
+
+.edit-button:hover {
+  transform: scale(1.1); 
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s;
+}
+
+.delete-button svg {
+  fill: #ff4500; 
+}
+
+.delete-button:hover {
+  transform: scale(1.1); 
+}
+
+
+#resultsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.no-events-message {
+  font-size: 1em;
+  color: #ccc;
+  text-align: center;
+}
+
 .banner {
   position: relative;
   width: 100%;
-  height: 50vh; /* Ocupa toda la altura de la pantalla */
+  height: 50vh; 
   background: url('/assets/img/fondo.png') no-repeat center center;
   background-size: cover;
   display: flex;
@@ -174,17 +522,17 @@ body {
 
 .banner-content {
   position: absolute;
-  top: 50%;
-  left: 50px; /* Margen izquierdo de 50px */
+  top: 70%;
+  left: 50px; 
   transform: translateY(-50%);
   text-align: left;
-  max-width: 500px; /* Limita el ancho para forzar las líneas */
+  max-width: 400px; 
 }
 
 .banner-content h2 {
   font-size: 3em;
   font-weight: bold;
-  line-height: 1.2; /* Ajusta el espaciado entre líneas */
+  line-height: 1.2; 
   margin-bottom: 20px;
   color: #000;
   text-shadow: 2px 2px 4px rgba(252, 250, 250, 0.7);
@@ -205,7 +553,6 @@ body {
   color: #fff; 
 }
 
-/* Contenedor de tarjetas */
 .results {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Cuatro columnas en pantallas grandes */
@@ -214,9 +561,9 @@ body {
   margin-top: -30px; /* Desplaza el contenedor hacia arriba para superponer al banner */
   z-index: 1; /* Asegura que las tarjetas estén encima del banner */
   position: relative; /* Necesario para que el z-index funcione correctamente */
-}
+} 
 
-/* Estilos de cada tarjeta */
+
 .card {
   background-color: #fff;
   border-radius: 8px;
@@ -226,7 +573,11 @@ body {
   text-align: left;
 }
 
-.card img {
+.card:hover {
+  transform: scale(1.02); 
+}
+
+.event-image {
   width: 100%;
   height: 150px;
   object-fit: cover;
@@ -237,10 +588,10 @@ body {
 }
 
 .card-title {
-  font-size: 1.1em;
+  font-size: 1.2em;
   font-weight: bold;
-  margin-bottom: 8px;
   color: #000;
+  margin-bottom: 8px;
 }
 
 .card-details {
@@ -249,15 +600,16 @@ body {
   margin-bottom: 8px;
 }
 
+
 .event-link {
   display: inline-block;
-  margin-top: 10px;
-  color: #000; 
-  background-color: #00ff80; 
+  color: #000;
+  background-color: #00ff80;
+  padding: 10px 15px;
+  border-radius: 5px;
   text-decoration: none;
   font-size: 0.9em;
-  padding: 10px 15px; 
-  border-radius: 5px; 
+  margin-top: 10px;
 }
 
 .event-link:hover {
@@ -265,6 +617,31 @@ body {
   background-color: #00ff8087; 
   opacity: 0.6;
 }
+
+.icon-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.delete-icon, .edit-icon, .favorite-icon {
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+.delete-icon:hover {
+  color: #ff4500;
+}
+
+.edit-icon:hover {
+  color: #00ff8087;
+}
+
+.favorite-icon:hover {
+  color: gold;
+}
+
 
 /* Footer */
 footer {

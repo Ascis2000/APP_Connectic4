@@ -1,0 +1,111 @@
+/* Ocultar modal por defecto */
+#boxModal {
+    display: none;
+    z-index: 10;
+}
+
+/* Fondo negro transparente */
+.modal_negro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Clases de visibilidad */
+.visible {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Estilos de la ventana modal */
+.modal {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    position: relative;
+}
+
+/* Estilo para las etiquetas */
+.modal label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+/* Estilo para los contenedores de cada campo */
+.modal div {
+    margin-bottom: 15px;
+}
+
+.modal input[type="text"],
+.modal input[type="url"],
+.modal textarea {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Específico para textarea */
+.modal textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Estilos para el mensaje dentro del modal */
+.modal #txtModal {
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Botones en el modal */
+.modal button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.modal button[type="button"] {
+background-color: #333; 
+  color: #00ff80;
+  border: 1px solid #00ff80;
+}
+
+.modal button.btn_update {
+    background-color: #00ff80;
+    color: #333;
+}
+
+
+.modal button:hover {
+    opacity: 0.5;
+}
+
+/* Sombra para imagen dentro del modal (opcional) */
+.modal img {
+    filter: drop-shadow(0px 2px 3px rgba(63, 69, 107, 0.5));
+}

@@ -55,13 +55,8 @@ async function getEventsScrape(req, res) {
             message = 'Datos de scraping insertados exitosamente';
         }
 
-        // obtenemos todos los documentos de la coleccion
-        const misAds = await adService.getAllAds();
-
-        res.render('adminDashboard', { 
-            message,
-            ads: misAds
-        });
+        // redirijo a la pagina de dashboard
+        res.redirect('/admin/dashboard');
 
     } catch (error) {
         res.status(500).json({ mensaje: error.message });

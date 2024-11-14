@@ -1,6 +1,5 @@
 // CONNECTIC4
 const express = require('express');
-
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const dotenv = require('dotenv');
@@ -8,6 +7,8 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/users.routes');
 const methodOverride = require('method-override');
 const adminRoutes = require('./routes/adminRoutes');
+const adsRoutes = require("./routes/ads.routes");
+// const favoritesRoutes = require("./routes/favoritesRoutes");
 const app = express();
 const port = 3000;
 
@@ -25,12 +26,12 @@ app.set('views', './views'); // Asegúrate de que el directorio `views` exista y
 
 app.use(express.json());
 
-// Logger
-/* app.use(morgan(':method :url :status :param[id] - :response-time ms :body')); */
+
 
 // Rutas
 // userRoutes
 app.use(userRoutes);
+// app.use('/', favoritesRoutes);
 
 // authRoutes
 app.use(authRoutes);
@@ -44,8 +45,6 @@ app.put('/api/user/:id', (req, res) => {
 
 app.use('/admin', adminRoutes);
 
-// adsRoutes
-const adsRoutes = require("./routes/ads.routes");
 
 // Usa adRoutes para la ruta raíz
 app.use('/', adsRoutes);
@@ -58,3 +57,6 @@ app.use('*', manage404);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+//Esto se usa para leer __test__ 
+module.exports = app;
