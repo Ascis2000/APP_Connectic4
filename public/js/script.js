@@ -105,3 +105,25 @@ function deleteAd(adId) {
         console.log("Eliminación cancelada.");
     }
 }
+
+// function addFavorites() {
+// 	fetch('/api/addFavorite', {
+// 	  method: 'POST',
+// 	  headers: {
+// 		'Content-Type': 'application/json',
+// 	  },
+// 	  body: JSON.stringify({ eventId: eventId }),
+// 	})
+// 	  .then(response => response.json())
+// 	  .then(data => {
+// 		if (data.success) {
+// 		  alert('Evento añadido a favoritos exitosamente');
+// 		} else {
+// 		  alert('Error al añadir a favoritos');
+// 		}
+// 	  })
+// 	  .catch(error => {
+// 		console.error('Error:', error);
+// 	  });
+//   }
+  

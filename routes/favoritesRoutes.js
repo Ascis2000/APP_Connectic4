@@ -1,3 +1,4 @@
+
 // const express = require('express');
 // const router = express.Router();
 // const favoritesController = require('../controllers/favoritesController');
@@ -7,4 +8,5 @@
 // router.delete('/api/favorites/:id', favoritesController.deleteFavorite);
 
 // module.exports = router;
+
 

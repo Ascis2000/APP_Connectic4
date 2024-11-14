@@ -1,6 +1,16 @@
-extends layout
+extends layout 
 
 block content
-  h1 Panel de Usuario
-  p Bienvenido, Usuario.
-  p Aquí puedes ver tu información y actividades.
+	h1 Panel de Usuario
+	p Bienvenido, Usuario.
+	p Aquí puedes ver tu información y actividades.
+  
+	// Contenedor para las tarjetas de eventos
+	.results#resultsContainer
+
+		if ads && ads.length > 0
+			include listAds.pug
+
+		else
+			p No hay eventos existentes en este momento.
+
