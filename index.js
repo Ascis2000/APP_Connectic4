@@ -1,6 +1,5 @@
 // CONNECTIC4
 const express = require('express');
-
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const dotenv = require('dotenv');
@@ -8,6 +7,8 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/users.routes');
 const methodOverride = require('method-override');
 const adminRoutes = require('./routes/adminRoutes');
+const adsRoutes = require("./routes/ads.routes");
+const favoritesRoutes = require("./routes/favoritesRoutes");
 const app = express();
 const port = 3000;
 
@@ -27,10 +28,18 @@ app.use(express.json());
 
 // Logger
 /* app.use(morgan(':method :url :status :param[id] - :response-time ms :body')); */
+// Conectar a MongoDB
+// connectMongo().then(() => {
+//   console.log("Conectado a MongoDB");
+// }).catch((error) => {
+//   console.error("Error de conexión a MongoDB:", error);
+// });
+
 
 // Rutas
 // userRoutes
 app.use(userRoutes);
+app.use('/', favoritesRoutes);
 
 // authRoutes
 app.use(authRoutes);
@@ -44,8 +53,6 @@ app.put('/api/user/:id', (req, res) => {
 
 app.use('/admin', adminRoutes);
 
-// adsRoutes
-const adsRoutes = require("./routes/ads.routes");
 
 // Usa adRoutes para la ruta raíz
 app.use('/', adsRoutes);
