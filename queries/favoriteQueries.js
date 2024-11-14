@@ -1,7 +1,5 @@
 
 // queries/favoriteQueries.js
-const { queries } = require("../config/db"); // Asegúrate de que la ruta sea correcta
-
 // queries.js
 const queries = {
   // Consulta para obtener todos los favoritos
