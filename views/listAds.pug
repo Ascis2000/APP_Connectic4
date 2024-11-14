@@ -1,14 +1,18 @@
 
 each ad in ads
-    .card
-        img(src=ad.imgSrc, alt="Imagen del evento", class="event-image")
+    .card(id=ad._id)
+        img.imgSrc(src=ad.imgSrc, alt="Imagen del evento", class="event-image")
         .card-content
-            h3.card-title= ad.title
+            h3.card-title.title= ad.title
 
-            if role === 'admin'
-                label.card-title(onclick=`deleteAd('${ad._id}')`)= 'Borrar Anuncio'
+            p.card-details.subtitle= ad.subtitle
+            p.card-details.organizer= ad.organizer
+            p.card-details.description= ad.description
+            a.event-link.urlWeb(href=ad.urlWeb target='_blank') Ver evento
 
-            p.card-details= ad.subtitle
-            p.card-details= ad.organizer
-            p.card-details= ad.description
-            a.event-link(href=ad.urlWeb target='_blank') Ver evento
+            div.icon-container
+                if role === 'admin'
+                    i.fas.fa-trash.delete-icon(onclick=`deleteAd('${ad._id}')`, title='Eliminar anuncio')
+                    i.fas.fa-edit.edit-icon(onclick=`editAd('${ad._id}')`, title='Editar anuncio')
+                    i.fas.fa-star.favorite-icon(onclick=`addFavorites('${ad._id}')`, title='Añadir a Favoritos') &nbsp;
+

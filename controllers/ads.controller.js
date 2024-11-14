@@ -31,11 +31,27 @@ const getAllAds = async (req, res) => {
     }
 };
 
+// GET, Mostramos formulario
+const showFormOneAd = async (req, res) => {
+    try {
+        res.render('formAd', { 
+            
+        });
+    } catch (error) {
+        res.status(500).json({ mensaje: error.message });
+    }
+};
+
 // POST: CREATE
 const createOneAd = async (req, res) => {
     try {
         const nuevoAd = await adService.createOneAd(req.body);
-        res.status(201).json(nuevoAd);
+
+        const misAds = await adService.getAllAds();
+        const message = "Evento añadido";
+
+        // redirijo a la pagina de dashboard
+        res.redirect('/admin/dashboard');
     } catch (error) {
         res.status(500).json({ mensaje: error.message });
     }
@@ -65,12 +81,21 @@ const getAdsSearch = async (req, res) => {
     }
 }
 
-// UPATE
+// PUT
 const updateAd = async (req, res) => {
     try {
         if(req.params.id){
+            console.log("req.params.id======", req.params.id)
+            console.log("req.body======", req.body)
             const updateAd = await adService.updateAd(req.params.id, req.body);
-            res.status(200).json({mensaje: "Ad editado!", updateAd});
+
+            const misAds = await adService.getAllAds();
+            const message = `Anuncio modificado: ${updateAd.title}`
+
+            res.render('adminDashboard', { 
+                message,
+                ads: misAds
+            });
         }
         else{
             return res.status(400).json({ mensaje: "ID del anuncio requerido" });
@@ -83,7 +108,7 @@ const updateAd = async (req, res) => {
 // DELETE
 const deleteAd = async (req, res) => {
     try {
-
+        
         const deleteAd = await adService.deleteAd(req.params.id);
         
         if (deleteAd) {
@@ -106,6 +131,7 @@ const deleteAd = async (req, res) => {
 module.exports = {
     getOneAd,
     getAllAds,
+    showFormOneAd,
     createOneAd,
     getAdsSearch,
     updateAd,
